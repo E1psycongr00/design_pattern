@@ -1,6 +1,6 @@
 # SPEC
-- IntelliJ IDA oracle 
-- JDK 1.8
+- IntelliJ IDA 
+- oracle JDK 1.8
 
 
 # 디자인 패턴
