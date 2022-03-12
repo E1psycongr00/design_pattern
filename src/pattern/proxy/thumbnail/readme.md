@@ -8,4 +8,4 @@
 
 쉬운 일은 내 선에서 처리가 가능하지만 어려운 일은 전문가를 부르는 개념이라 이해하면 쉬울 듯 하다. 
 
-![6EBAB811-7E8E-4513-81BC-97A7201BA8FD.jpeg](20220311(P%2052c2b/6EBAB811-7E8E-4513-81BC-97A7201BA8FD.jpeg)
+![aa](/src/resources/images/proxy/1.jpeg)
