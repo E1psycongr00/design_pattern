@@ -11,4 +11,4 @@
 - 상태 패턴 (State Pattern)
 - 커맨드 패턴 (Command Pattern)
 - 어댑트 패턴 (Adapt Pattern)
-- 프록시 패턴 (Proxy Pattern) &nbsp;&nbsp;&nbsp;[아직 만드는 중]
+- 프록시 패턴 (Proxy Pattern)
