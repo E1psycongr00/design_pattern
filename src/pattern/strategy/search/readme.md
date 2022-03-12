@@ -10,7 +10,7 @@
 
  
 
-![aa](src/resources/images/strategy/1.jpeg)
+![](../../../resources/images/strategy/1.jpeg)
 
 SearchStrategy 인터페이스를 통해 모드별 검색 기능 객체를 관리한다. 새로운 모드가 생기면 새로운 객체를 새로 만들고 interface에 등록만 해주면 되므로 기존 문제점이였던 OCP를 만족한다.
 
