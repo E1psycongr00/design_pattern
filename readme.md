@@ -1,5 +1,5 @@
 # SPEC
-- IntelliJ IDA 
+- IntelliJ IDEA 
 - oracle JDK 1.8
 
 
