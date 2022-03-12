@@ -1,26 +1,83 @@
-# 20220309(Strategy Pattern)
+# 20220309(State Pattern)
 
-작성일시: 2022년 3월 9일 오후 5:54
+작성일시: 2022년 3월 9일 오후 6:29
 
-# 전략 패턴
+# 상태 패턴
 
-전략 패턴은 모드별로 모듈화해서 의존적인 코드를 독립적이게 만들어 준다. 그래서 결과적으로 폐쇄 개방 원칙을 만족하게 만든다.
+기본적으로 . 외부에서 객체를 생성해서 끼워주는 패턴은 전략 패턴과 매우 유사하다. 그러나 활용 용도가 조금 다르다. 전략 패턴은 동일한 업무가 주어지고 mode에 따라 동일한 업무가 조금씩 차이가 있다. 그러나 상태 패턴의 경우 상태에 따라 업무가 다르고 상태 또한 변화시킨다는 차이점이 있다. 상태의 변화는 실제 동작을 수행하는 interface 객체에서 일어 날 수 도 있고 아니면 interface  인스턴스 변수를 가지고 있는 객체에서 분기문으로 상태를 변화 시킬 수 있다. 이 방법은 개발자의 자유이다.
 
-예를 들어 타입별 검색을 요구하는 search bar를 만든다고 가정하자..... 보통의 경우 한 클래스에  if문을 이용해 여러 분기 조건을 사용하고 분기에 따라 처리 할 것이다. 매번 새로운 모드가 추가 될 때 마다 else if 를 통해 코드를 수정해야 하고 프로젝트가 커지면 하나 잘못 수정했다가 코드안에 전체 코드가 다 들어 있기 때문에 디버그 하기도 힘들고 테스트코드 짜기도 쉽지 않다. 만약 이 분기별 작업을 모듈화 해서 따로 빼주면 어떻게 될까??? 이 고민에서 나온 방법이 전략 패턴이다.
+![](src/resources/images/state/1.png)
 
- 
+위 코드는 가스 버너를 예제로 한 코드이다. 버너는 불을 킨 상태, 그리고 불을 끈 상태 이렇게 2가지 상태가 있다. 이 예제의 경우 버너의 상태를 modeState로 정의하고 인터페이스를 implement한  2개의 클래스를 정의해주었다.
 
-![275C4D95-DF8F-4B42-BB63-B104CECE3022.jpeg](20220309(S%20065d7/275C4D95-DF8F-4B42-BB63-B104CECE3022.jpeg)
+여기선 toggle로 상태 처리 해주었지만 기본적으로 전략패턴과 패턴 자체는 동일하다. 인터페이스를 통해 여러 state를 모듈화해서 관리하고 외부에서 객체를 생성한다음 setter를 이용해 넣어준다.
 
-SearchStrategy 인터페이스를 통해 모드별 검색 기능 객체를 관리한다. 새로운 모드가 생기면 새로운 객체를 새로 만들고 interface에 등록만 해주면 되므로 기존 문제점이였던 OCP를 만족한다.
+OCP(Open /Closed Principle) 과 SRP (Single Responsibility Principle) 2가지를 모두 만족한다.
 
-실질적인 기능을 수행하는 SearchStrategy 객체를 어떤 동작 클래스의 인스턴스 변수로 선언한 다음 외부에서 new를 이용해 객체를 생성해서 넣어주면 된다.  그 다음 onClick 메서드를 수행한다.
+그리고 실제로 동작할 메서드는 ModeState 객체에서 호출해준다.
 
-만약 이런 식으로 구현하지 않는다면 onClick 메서드에 분기별 조건과 기능을 모두 넣었을 것이다.
+# 코드
 
-기존의 코드라면 
+**ModeState 인터페이스**
 
-1. 객체는 하나의 기능만을 수행해야 한다. ⇒ SRP(Single Responsibility Principle)
-2. 소프트웨어 요소는 확장에는 열려있고 변경에는 닫혀있어야한다. ⇒ OCP(Open / Closed Principle
+```java
+public interface ModeState {
+    public void toggle(Burner burner);
+}
 
-2 가지의 객체 지향 원칙에 위배된다.
+class ModeStateOn implements ModeState {
+    @Override
+    public void toggle(Burner burner) {
+        System.out.println("불을 끄겠습니다.");
+        // ........
+        // 기능 구현
+        // ........
+        burner.setModeState(new ModeStateOFF());
+    }
+}
+
+class ModeStateOFF implements ModeState {
+    @Override
+    public void toggle(Burner burner) {
+        System.out.println("불을 올리겠습니다.");
+        // ........
+        // 기능 구현
+        // ........
+        burner.setModeState(new ModeStateOn());
+    }
+}
+```
+
+**버너 클래스**
+
+```java
+package com.burner;
+
+public class Burner {
+    ModeState modeState = new ModeStateOFF();
+
+    // modeState setter
+    public void setModeState(ModeState modeState) {
+        this.modeState = modeState;
+    }
+
+    public void toggle() {
+        modeState.toggle(this);
+    }
+
+}
+```
+
+**Test 코드**
+
+```java
+package com.burner;
+
+public class test {
+    public static void main(String[] args) {
+        Burner burner = new Burner();
+        burner.toggle();
+        burner.toggle();
+    }
+}
+```

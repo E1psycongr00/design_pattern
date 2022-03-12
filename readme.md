@@ -9,7 +9,7 @@
 
 ## 패턴 종류
 - [전략 패턴 (Strategy Pattern)](src/pattern/strategy/search)
-- [상태 패턴 (State Pattern)]()
+- [상태 패턴 (State Pattern)](src/pattern/state/burner)
 - 커맨드 패턴 (Command Pattern)
 - 어댑트 패턴 (Adapt Pattern)
 - 프록시 패턴 (Proxy Pattern)
