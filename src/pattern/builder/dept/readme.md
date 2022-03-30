@@ -2,8 +2,8 @@
 
 생성자 패턴 중 하나이다.
 
-기존의 생성자를 이용하는 방식은 가독성이 떨어졌다. 예를 들어 DeptDTO를 가정해보자. <br>
-DeptDTO에는 deptno, dname, loc가 있는데 new 를 이용해 생성하면 <br>
+기존의 생성자를 이용하는 방식은 가독성이 떨어졌다. 예를 들어 DeptDTO를 가정해보자.
+DeptDTO에는 deptno, dname, loc가 있는데 new 를 이용해 생성하면
 new DeptDTO(10, "기획", "서울") 이게 무슨 의미인지 알 수가 없다. 
 그렇다고 setter를 이용하자니 가독성은 나을 수 있지만 뭔가 번거롭다. 그래서 builder 
 패턴이 나오게 된다.
