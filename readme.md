@@ -1,4 +1,4 @@
-# SPEC
+# 사용한 도구
 - IntelliJ IDEA 
 - oracle JDK 1.8
 
@@ -13,3 +13,4 @@
 - 커맨드 패턴 (Command Pattern)
 - [어댑트 패턴 (Adapt Pattern)](src/pattern/adapt/find)
 - [프록시 패턴 (Proxy Pattern)](src/pattern/proxy/thumbnail)
+- [빌더 패턴  (Builder Pattern)](src/pattern/builder/dept)
