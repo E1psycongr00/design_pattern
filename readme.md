@@ -13,4 +13,5 @@
 - [커맨드 패턴 (Command Pattern)](src/pattern/behavioral/command)
 - [어댑트 패턴 (Adapt Pattern)](src/pattern/structural/adapt)
 - [프록시 패턴 (Proxy Pattern)](src/pattern/structural/proxy)
+- [컴포지드 패턴 (Composite Pattern)](src/pattern/structural/composite)
 - [빌더 패턴  (Builder Pattern)](src/pattern/creational/builder)
